@@ -17,8 +17,19 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Jugadores\:
+        resource: '../src/Jugadores/'
+        tags: ['controller.service_arguments']
+        exclude:
+            - '../src/Jugadores/Entity/'
+            
+    App\Game\:
+        resource: '../src/Game/'
+        tags: ['controller.service_arguments']
+        exclude:
+            - '../src/Game/Entity/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

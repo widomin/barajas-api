@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Game\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -8,12 +8,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class DefaultController
- * @package App\Controller
+ * Class GameController
+ * @package App\Game\Controller
  *
- * @Route(path="/api/")
+ * @Route(path="/api/game/")
  */
-class DefaultController
+class GameController
 {
 
     public function __construct(RequestStack $requestStack)
@@ -21,14 +21,21 @@ class DefaultController
     }
     
     /**
-     * @Route("hello/{name}", name="hello", methods={"GET"})
+     * @Route("hello/{name}", name="game_hello", methods={"GET"})
      */
     public function hello($name): JsonResponse
     {
-        
         return new JsonResponse(['mensaje' => "hola {$name}"], Response::HTTP_OK);
     }
-
+    
+    /**
+     * @Route("add-player/{name}", name="game_add-player", methods={"GET"})
+     */
+    public function addPlayer($name){
+        $session = $this->requestStack->getSession();
+        $players = $session->get('players');
+        $session->set('players', $players);
+    }
 }
 
 ?>

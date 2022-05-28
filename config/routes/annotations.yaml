@@ -1,5 +1,13 @@
-controllers:
-    resource: ../../src/Controller/
+# App:
+#     resource: ../../src/Controller/
+#     type: annotation
+
+Game:
+    resource: ../../src/Game/Controller/
+    type: annotation
+
+Jugadores:
+    resource: ../../src/Jugadores/Controller/
     type: annotation
 
 kernel:

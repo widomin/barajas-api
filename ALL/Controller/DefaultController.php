@@ -28,7 +28,18 @@ class DefaultController
         
         return new JsonResponse(['mensaje' => "hola {$name}"], Response::HTTP_OK);
     }
+    
+    /**
+     * @Route("add-player/{name}", name="add-player", methods={"GET"})
+     */
+    public function addPlayer($name){
+        $session = $this->requestStack->getSession();
+        $players = $session->get('players');
+        
 
+  
+        $session->set('players', $players);
+    }
 }
 
 ?>

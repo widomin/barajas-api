@@ -32,6 +32,17 @@ class Jugadores
      */
     private $last_game;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $last_session;
+
+    /**
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     */
+    private $last_connection;
+
+
     public function getId(): ?int
     {
         return $this->id;
